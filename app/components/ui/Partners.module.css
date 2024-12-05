@@ -1,0 +1,32 @@
+.scrollContainer {
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.scrollContent {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  gap: 4rem;
+}
+
+.partner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scrollContainer:hover .scrollContent {
+  animation-play-state: paused;
+} 

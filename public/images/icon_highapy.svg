@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_2" data-name="图层 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 344.87 344.88">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #1d2088;
+        stroke-miterlimit: 10;
+        stroke-width: 3.92px;
+      }
+
+      .cls-2 {
+        fill: #1d2088;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        fill: #7cb3e1;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-5 {
+        fill: #fdd019;
+      }
+    </style>
+  </defs>
+  <g id="Capa_1" data-name="Capa 1">
+    <g>
+      <path class="cls-3" d="m344.87,172.44c0,95.24-77.2,172.44-172.44,172.44S0,267.68,0,172.44,77.2,0,172.44,0s172.44,77.21,172.44,172.44Z"/>
+      <g>
+        <g>
+          <polygon class="cls-5" points="69.12 193.33 47.23 214.11 47.23 250.38 69.12 250.38 69.12 193.33"/>
+          <polygon class="cls-4" points="91 179.7 83.75 179.72 69.12 193.33 69.12 250.38 91 250.38 91 179.7"/>
+          <rect class="cls-5" x="91" y="179.7" width="21.89" height="70.68"/>
+          <rect class="cls-4" x="112.9" y="179.7" width="21.88" height="70.68"/>
+          <polygon class="cls-5" points="156.65 162.52 138.39 179.72 134.77 179.7 134.77 250.38 156.65 250.38 156.65 162.52"/>
+          <polygon class="cls-4" points="178.53 145.31 174.92 145.31 156.65 162.52 156.65 250.38 178.53 250.38 178.53 145.31"/>
+          <rect class="cls-5" x="178.53" y="145.24" width="21.88" height="105.14"/>
+          <rect class="cls-4" x="200.41" y="145.24" width="21.89" height="105.14"/>
+          <polygon class="cls-5" points="244.19 131.54 229.53 145.31 222.3 145.31 222.3 250.38 244.19 250.38 244.19 131.54"/>
+          <polygon class="cls-4" points="266.07 110.92 244.19 131.54 244.19 250.38 266.07 250.38 266.07 110.92"/>
+        </g>
+        <polyline class="cls-1" points="277.38 100.38 229.55 145.32 174.92 145.32 138.39 179.72 83.75 179.72 39.7 221.29"/>
+        <polygon class="cls-2" points="252.63 104.61 283.62 94.5 271.03 122.45 271.36 106.18 252.63 104.61"/>
+      </g>
+    </g>
+  </g>
+</svg>
