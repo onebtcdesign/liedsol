@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import LanguageSwitch from '../ui/LanguageSwitch'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const [currentLang, setCurrentLang] = useState('en')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +28,11 @@ export default function Header() {
     { name: 'DOCS', path: '/docs' },
     { name: 'DEFI', path: '/defi' },
   ]
+
+  const handleLanguageChange = (lang: string) => {
+    setCurrentLang(lang)
+    window.dispatchEvent(new CustomEvent('languageChange', { detail: lang }))
+  }
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
@@ -57,9 +64,15 @@ export default function Header() {
             ))}
           </nav>
 
-          <button className="hidden md:block bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
-            Wallet
-          </button>
+          <div className="flex items-center gap-4">
+            <LanguageSwitch
+              currentLang={currentLang}
+              onLanguageChange={handleLanguageChange}
+            />
+            <button className="hidden md:block bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
+              Wallet
+            </button>
+          </div>
 
           <button 
             className="md:hidden"

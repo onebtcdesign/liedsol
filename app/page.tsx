@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import en from './i18n/locales/en'
+import zh from './i18n/locales/zh'
 import Image from "next/image"
 import Header from "./components/layout/Header"
 import NewCubeAnimation from "./components/ui/NewCubeAnimation"
@@ -22,6 +24,18 @@ type Step = {
 );
 
 export default function Home() {
+  const [currentLang, setCurrentLang] = useState('en')
+  const t = currentLang === 'en' ? en : zh
+
+  useEffect(() => {
+    const handleLanguageChange = (event: CustomEvent) => {
+      setCurrentLang(event.detail)
+    }
+
+    window.addEventListener('languageChange', handleLanguageChange as EventListener)
+    return () => window.removeEventListener('languageChange', handleLanguageChange as EventListener)
+  }, [])
+
   const steps: Step[] = [
     {
       number: "01",
@@ -112,31 +126,31 @@ export default function Home() {
                 </div>
 
                 <h1 className="mb-6 tracking-tight leading-tight font-[500]">
-                  <span className="block mb-2 text-[2rem] md:text-[2.75rem]">STAKE WITH</span>
-                  <span className="block mb-2 text-[2rem] md:text-[2.75rem]">CONFIDENCE SECURELY</span>
-                  <span className="block text-[3rem] md:text-[4.0rem] font-[800]">STAKE YOUR SOL</span>
+                  <span className="block mb-2 text-[2rem] md:text-[2.75rem]">{t.hero.title1}</span>
+                  <span className="block mb-2 text-[2rem] md:text-[2.75rem]">{t.hero.title2}</span>
+                  <span className="block text-[3rem] md:text-[4.0rem] font-[800]">{t.hero.title3}</span>
                 </h1>
                 <p className="text-gray-500 mb-16 text-[1.2rem] md:text-[1.6rem] font-[500] leading-normal">
-                  Pledging with confidence and enjoying ongoing benefits as you go
+                  {t.hero.subtitle}
                 </p>
                 <div className="flex flex-col md:flex-row items-center gap-8 md:gap-4">
                   <div className="grid grid-cols-3 gap-8 w-full md:w-auto">
                     <div>
                       <div className="text-2xl md:text-3xl font-bold mb-2">8.4%</div>
-                      <div className="text-sm md:text-base text-gray-600">APY</div>
+                      <div className="text-sm md:text-base text-gray-600">{t.hero.stats.apy}</div>
                     </div>
                     <div>
-                      <div className="text-2xl md:text-3xl font-bold mb-2">$3.5M</div>
-                      <div className="text-sm md:text-base text-gray-600">TVL</div>
+                      <div className="text-2xl md:text-3xl font-bold mb-2">$3.25M</div>
+                      <div className="text-sm md:text-base text-gray-600">{t.hero.stats.tvl}</div>
                     </div>
                     <div>
-                      <div className="text-2xl md:text-3xl font-bold mb-2">3%</div>
-                      <div className="text-sm md:text-base text-gray-600">Fees</div>
+                      <div className="text-2xl md:text-3xl font-bold mb-2">3.0%</div>
+                      <div className="text-sm md:text-base text-gray-600">{t.hero.stats.fees}</div>
                     </div>
                   </div>
                   <Link href="/stake" className="w-full md:w-auto bg-black text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 text-base font-[500]">
                     <Image src="/images/icon_sol.svg" alt="" width={24} height={24} />
-                    STAKE
+                    {t.hero.stakeButton}
                   </Link>
                 </div>
               </div>
@@ -156,13 +170,11 @@ export default function Home() {
               {/* 左侧标题 */}
               <div>
                 <h2 className="text-[2.4rem] md:text-[3.2rem] font-[600] leading-tight">
-                  The Simplest<br />
-                  Way With LiedSol<br />
-                  Stake SOL
+                  {t.process.title}
                 </h2>
               </div>
 
-              {/* 右侧卡片容器 */}
+              {/* 侧卡片容器 */}
               <div className="flex flex-col gap-8 relative">
                 {/* 竖线 */}
                 <div className="absolute left-8 top-14 bottom-0 w-[1px] bg-gray-200"></div>
@@ -239,11 +251,10 @@ export default function Home() {
                   />
                 </div>
                 <div className="space-y-6">
-                  <h3 className="text-2xl font-medium">HIGH APY</h3>
-                  <div className="text-[4.5rem] font-[600] leading-none">8.4%</div>
+                  <h3 className="text-2xl font-medium">{t.stats.highApy.title}</h3>
+                  <div className="text-[4.5rem] font-[600] leading-none">{t.stats.highApy.value}</div>
                   <p className="text-gray-400 text-lg leading-relaxed">
-                    Achieve an impressive annual percentage yield (APY) of 8.8%, enabling rapid growth
-                    of your investments within the DeFi ecosystem.
+                    {t.stats.highApy.description}
                   </p>
                 </div>
               </div>
@@ -259,11 +270,10 @@ export default function Home() {
                   />
                 </div>
                 <div className="space-y-6">
-                  <h3 className="text-2xl font-medium">LOW FEE</h3>
-                  <div className="text-[4.5rem] font-[600] leading-none">3.0%</div>
+                  <h3 className="text-2xl font-medium">{t.stats.lowFee.title}</h3>
+                  <div className="text-[4.5rem] font-[600] leading-none">{t.stats.lowFee.value}</div>
                   <p className="text-gray-400 text-lg leading-relaxed">
-                    Benefit from a competitive management fee of just 3%, maximizing your investment
-                    returns while enjoying high yields.
+                    {t.stats.lowFee.description}
                   </p>
                 </div>
               </div>
@@ -279,11 +289,10 @@ export default function Home() {
                   />
                 </div>
                 <div className="space-y-6">
-                  <h3 className="text-2xl font-medium">DEFI ECOSYSTEM</h3>
-                  <div className="text-[4.5rem] font-[600] leading-none">10+</div>
+                  <h3 className="text-2xl font-medium">{t.stats.defi.title}</h3>
+                  <div className="text-[4.5rem] font-[600] leading-none">{t.stats.defi.value}</div>
                   <p className="text-gray-400 text-lg leading-relaxed">
-                    Our robust DeFi ecosystem offers not only staking rewards but also seamless opportunities
-                    for trading, re-staking, and lending, allowing you to optimize your returns.
+                    {t.stats.defi.description}
                   </p>
                 </div>
               </div>
